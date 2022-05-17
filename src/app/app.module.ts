@@ -10,6 +10,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ArticleCreationComponent} from './article-creation/article-creation.component';
 import { SingleArticleComponent } from './single-article/single-article.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SingleArticleComponent } from './single-article/single-article.componen
     ArticleComponent,
     ArticlesComponent,
     ArticleCreationComponent,
-    SingleArticleComponent
+    SingleArticleComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

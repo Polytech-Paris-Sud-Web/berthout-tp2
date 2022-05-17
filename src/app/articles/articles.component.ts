@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Article} from "../article/article.component";
 import {ArticleService} from "../article.service";
 import {mergeMap} from "rxjs";
@@ -10,13 +10,16 @@ import {mergeMap} from "rxjs";
 })
 export class ArticlesComponent implements OnInit {
 
+  @Input()
+  limit: number | undefined;
+
   articles: Article[] = [];
 
   constructor(private articleService: ArticleService) {
   }
 
   ngOnInit(): void {
-    this.articleService.articles()
+    this.articleService.articles(this.limit)
       .subscribe(newArticles => this.articles = newArticles);
   }
 
@@ -24,7 +27,7 @@ export class ArticlesComponent implements OnInit {
     // Remove and update articles
     this.articleService
       .remove(article.id)
-      .pipe(mergeMap(() => this.articleService.articles()))
+      .pipe(mergeMap(() => this.articleService.articles(this.limit)))
       .subscribe(newArticles => this.articles = newArticles);
   }
 }

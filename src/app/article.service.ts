@@ -21,8 +21,13 @@ export class ArticleService implements AddArticleService, GetArticleService {
   constructor(private http: HttpClient) {
   }
 
-  articles(): Observable<Article[]> {
-    return this.http.get<Article[]>(`${BASE_URL}`);
+  articles(limit: number | undefined): Observable<Article[]> {
+    const params: { _limit?: number } = {};
+    if (limit !== undefined) {
+      params._limit = limit;
+    }
+
+    return this.http.get<Article[]>(`${BASE_URL}`, {params});
   }
 
   remove(id: number): Observable<void> {
