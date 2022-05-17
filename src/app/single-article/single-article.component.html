@@ -1,0 +1,7 @@
+<app-article *ngIf="article !== null"
+             [author]="article.author"
+             [customContent]="article.content"
+             [id]="article.id"
+             [title]="article.title">
+</app-article>
+<p *ngIf="error !== null" style="color: red">Unable to fetch the article</p>

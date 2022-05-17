@@ -9,13 +9,15 @@ import {AddArticleService, ArticleService} from "./article.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ArticleCreationComponent} from './article-creation/article-creation.component';
+import { SingleArticleComponent } from './single-article/single-article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleComponent,
     ArticlesComponent,
-    ArticleCreationComponent
+    ArticleCreationComponent,
+    SingleArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import {ArticleCreationComponent} from './article-creation/article-creation.comp
   ],
   providers: [
     ArticleService,
-    {provide: "AddArticleService", useClass: ArticleService}
+    {provide: "AddArticleService", useClass: ArticleService},
+    {provide: "GetArticleService", useClass: ArticleService}
   ],
   bootstrap: [AppComponent]
 })

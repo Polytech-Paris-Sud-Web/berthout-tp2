@@ -20,6 +20,8 @@ export class ArticleComponent implements OnInit {
   author: string;
   @Input("customContent")
   content: string;
+  @Input()
+  allowLink: boolean;
 
   @Output()
   readonly deletedArticle = new EventEmitter<Article>();
@@ -29,6 +31,7 @@ export class ArticleComponent implements OnInit {
     this.title = "undefined";
     this.author = "undefined";
     this.content = "undefined";
+    this.allowLink = false;
   }
 
   ngOnInit(): void {

@@ -10,10 +10,14 @@ export interface AddArticleService {
   add(info: ArticleCreationInfo): Observable<any>;
 }
 
+export interface GetArticleService {
+  get(id: number): Observable<Article>;
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService {
+export class ArticleService implements AddArticleService, GetArticleService {
   constructor(private http: HttpClient) {
   }
 
@@ -27,5 +31,9 @@ export class ArticleService {
 
   add(info: ArticleCreationInfo): Observable<any> {
     return this.http.post(`${BASE_URL}`, info);
+  }
+
+  get(id: number): Observable<Article> {
+    return this.http.get<Article>(`${BASE_URL}/${id}`);
   }
 }

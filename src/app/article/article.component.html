@@ -1,4 +1,10 @@
-<h3>{{this.title}}</h3>
+<h3 *ngIf="allowLink; else allowLinkElseBlock">
+  <a [routerLink]="'/articles/' + this.id">{{this.title}}</a>
+</h3>
+<ng-template #allowLinkElseBlock>
+  <h3>{{this.title}}</h3>
+</ng-template>
+
 <p>by <span class="article-author">{{this.author}}</span></p>
 <p>{{this.content}}</p>
-<button (click)="this.delete()">Delete</button>
+<button *ngIf="this.deletedArticle.observed" (click)="this.delete()">Delete</button>
