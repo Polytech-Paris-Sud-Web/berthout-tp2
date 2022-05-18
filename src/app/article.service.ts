@@ -25,10 +25,12 @@ export class ArticleService implements AddArticleService, GetArticleService, Del
   constructor(private http: HttpClient) {
   }
 
-  articles(limit: number | undefined = undefined, query: string | undefined = undefined): Observable<Article[]> {
-    const params: { _limit?: number, q?: string } = {};
-    if (limit !== undefined) {
-      params._limit = limit;
+  articles(last: number | undefined = undefined, query: string | undefined = undefined): Observable<Article[]> {
+    const params: { _sort?: string, _order?: string, _limit?: number, q?: string } = {};
+    if (last !== undefined) {
+      params._sort = "id";
+      params._order = "desc";
+      params._limit = last;
     }
     if (query !== undefined) {
       params.q = query;

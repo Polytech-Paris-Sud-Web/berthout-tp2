@@ -30,7 +30,6 @@ export class ArticlesComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.updateArticles(this.fetchService);
   }
 
   ngOnChanges(changes: SimpleChanges) {
