@@ -30,16 +30,14 @@ export class ArticlesComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.fetchService.fetch()
-      .subscribe(newArticles => this.articles = newArticles);
+    this.updateArticles(this.fetchService);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     // Subscribe to new service
     const fetchServiceChange = changes["fetchService"];
     if (fetchServiceChange) {
-      (fetchServiceChange.currentValue as FetchArticlesService).fetch()
-        .subscribe(newArticles => this.articles = newArticles);
+      this.updateArticles(fetchServiceChange.currentValue);
     }
   }
 
@@ -48,6 +46,11 @@ export class ArticlesComponent implements OnInit, OnChanges {
     this.deleteArticleService
       .remove(article.id)
       .pipe(mergeMap(() => this.fetchService.fetch()))
+      .subscribe(newArticles => this.articles = newArticles);
+  }
+
+  private updateArticles(service: FetchArticlesService) {
+    service.fetch()
       .subscribe(newArticles => this.articles = newArticles);
   }
 }

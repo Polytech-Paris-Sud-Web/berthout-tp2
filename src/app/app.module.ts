@@ -12,6 +12,7 @@ import {ArticleCreationComponent} from './article-creation/article-creation.comp
 import { SingleArticleComponent } from './single-article/single-article.component';
 import { HomeComponent } from './home/home.component';
 import { AllArticlesComponent } from './all-articles/all-articles.component';
+import { AuthorComponent } from './author/author.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AllArticlesComponent } from './all-articles/all-articles.component';
     ArticleCreationComponent,
     SingleArticleComponent,
     HomeComponent,
-    AllArticlesComponent
+    AllArticlesComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,

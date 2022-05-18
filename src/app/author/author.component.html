@@ -1,0 +1,5 @@
+<div *ngIf="this.author !== null">
+  <p>Name: {{this.author.name}}</p>
+  <p>Description: {{this.author.description}}</p>
+</div>
+<p *ngIf="error !== null" style="color: red">Unable to fetch the author</p>
