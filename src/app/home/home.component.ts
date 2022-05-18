@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ArticleService} from "../article.service";
+import {FetchArticlesService} from "../articles/articles.component";
+import {Observable} from "rxjs";
+import {Article} from "../article/article.component";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  count: number = 10;
+  readonly fetchService: FetchArticlesService;
+  readonly count: number = 10;
 
-  constructor() { }
+  constructor(articleService: ArticleService) {
+    const count = this.count;
+
+    this.fetchService = new class implements FetchArticlesService {
+      fetch(): Observable<Article[]> {
+        return articleService.articles(count);
+      }
+    }
+  }
 
   ngOnInit(): void {
   }

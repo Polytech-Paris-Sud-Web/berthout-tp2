@@ -14,17 +14,24 @@ export interface GetArticleService {
   get(id: number): Observable<Article>;
 }
 
+export interface DeleteArticleService {
+  remove(id: number): Observable<void>;
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService implements AddArticleService, GetArticleService {
+export class ArticleService implements AddArticleService, GetArticleService, DeleteArticleService {
   constructor(private http: HttpClient) {
   }
 
-  articles(limit: number | undefined): Observable<Article[]> {
-    const params: { _limit?: number } = {};
+  articles(limit: number | undefined = undefined, query: string | undefined = undefined): Observable<Article[]> {
+    const params: { _limit?: number, q?: string } = {};
     if (limit !== undefined) {
       params._limit = limit;
+    }
+    if (query !== undefined) {
+      params.q = query;
     }
 
     return this.http.get<Article[]>(`${BASE_URL}`, {params});

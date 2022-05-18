@@ -7,10 +7,11 @@ import {ArticleComponent} from './article/article.component';
 import {ArticlesComponent} from './articles/articles.component';
 import {AddArticleService, ArticleService} from "./article.service";
 import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ArticleCreationComponent} from './article-creation/article-creation.component';
 import { SingleArticleComponent } from './single-article/single-article.component';
 import { HomeComponent } from './home/home.component';
+import { AllArticlesComponent } from './all-articles/all-articles.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import { HomeComponent } from './home/home.component';
     ArticlesComponent,
     ArticleCreationComponent,
     SingleArticleComponent,
-    HomeComponent
+    HomeComponent,
+    AllArticlesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     ArticleService,

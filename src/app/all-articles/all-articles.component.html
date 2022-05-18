@@ -1,0 +1,5 @@
+<p>
+  Search:
+  <input [(ngModel)]="search" (ngModelChange)="onSearchChange($event)" />
+</p>
+<app-articles [fetchService]="this.fetchService"></app-articles>
