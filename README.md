@@ -1,6 +1,6 @@
 # SimpleApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+Available [here](https://polytech-paris-sud-web.github.io/berthout-tp2/)
 
 ## Database
 
