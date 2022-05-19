@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ArticleCreationComponent} from "./article-creation/article-creation.component";
 import {SingleArticleComponent} from "./single-article/single-article.component";
 import {HomeComponent} from "./home/home.component";
+import {environment} from '../environments/environment';
 import {AllArticlesComponent} from "./all-articles/all-articles.component";
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
+  imports: [RouterModule.forRoot(routes, {enableTracing: !environment.production})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
