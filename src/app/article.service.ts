@@ -3,8 +3,9 @@ import {Article} from "./article/article.component";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ArticleCreationInfo} from "./article-creation/article-creation.component";
+import {environment} from '../environments/environment';
 
-const BASE_URL = "http://localhost:3000/articles";
+const BASE_URL = `${environment.api.url}/articles`;
 
 export interface AddArticleService {
   add(info: ArticleCreationInfo): Observable<any>;
