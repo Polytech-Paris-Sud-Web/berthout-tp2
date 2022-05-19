@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Database
 
-Example of a database: `dev/resources/db.json`
+Example of a database: `db.json`
 
 ## Development server
 
